@@ -1,0 +1,38 @@
+.App {
+    text-align: center;
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+}
+
+.App-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background: blue;
+    min-width: 70px;
+    font-size: 2em;
+    border-radius: 10%;
+}
+
+.App-button {
+    font-weight: bold;
+    background: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.App-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background-color: aliceblue;
+}

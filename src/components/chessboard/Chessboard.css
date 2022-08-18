@@ -1,0 +1,23 @@
+.Board-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    background: rgb(156, 156, 156);
+    width: 600px;
+    height: 600px;
+}
+
+.Board-grid-elem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Board-grid-elem-white {
+    background-color:white;
+}
+
+.Board-grid-elem-black {
+    background-color:black;
+    color: white;
+}
