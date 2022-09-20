@@ -13,11 +13,10 @@
     align-items: center;
 }
 
-.Board-grid-elem-white {
+.white {
     background-color:white;
 }
 
-.Board-grid-elem-black {
+.black {
     background-color:black;
-    color: white;
 }

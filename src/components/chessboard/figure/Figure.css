@@ -5,11 +5,11 @@
     cursor: pointer;
 }
 
-.checker-black {
+.black {
     background-color: rgb(153, 64, 9);
 }
 
-.checker-white {
+.white {
     background-color: rgb(255, 255, 255);
 }
 
