@@ -6,17 +6,3 @@
     width: 600px;
     height: 600px;
 }
-
-.Board-grid-elem {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.white {
-    background-color:white;
-}
-
-.black {
-    background-color:black;
-}

@@ -13,7 +13,7 @@ const boardSlice = createSlice({
             state.squares = action.payload;
         },
         figuresCreating: (state, action) => {
-            state.figures = action.payload;
+            state.figures.push(action.payload);
         }
     }
 });

@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
+
 import './Figure.css'
 
-const Figure = () => {
+const Figure = ({colorFigure}) => { 
     return (
-        <div onClick={() => {}} className={'checker white'}></div>
-    )
-}
+        <div onClick={(e) => {console.dir(e.target)}} className={`checker checker-${colorFigure}`}></div>
+    );
+};
 
 export default Figure;

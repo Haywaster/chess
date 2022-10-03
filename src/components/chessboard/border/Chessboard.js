@@ -1,57 +1,50 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { squaresCreating } from './boardSlice'
+import { squaresCreating, figuresCreating } from './boardSlice'
 import Square from '../square/Square';
-import Figure from '../figure/Figure';
 
 import './Chessboard.css';
 
+const boardCreateSquards = () => {
+    let board = [];
+    for(let i = 0; i < 8; i++) {
+        for(let j = 0; j < 8; j++){
+            const squareData = {
+                color: '',
+                row: i,
+                col: j,
+                id: i + ':' + j
+            }
+            if((i + j) % 2 === 0) {
+                squareData.color = 'white'
+            } else {
+                squareData.color = 'black'
+            }
+            board.push(squareData);
+        };
+    };
+    return board
+};
+
 const Chessboard = () => {
-    const squares = useSelector(state => state.board.squares);
     const dispatch = useDispatch();
-
-    const boardCreateElements = () => {
-        const board = [];
-        for(let i = 0; i < 8; i++) {
-            const row = [];
-            for(let j = 0; j < 8; j++){
-                const square = {
-                    color: '',
-                    row: i,
-                    col: j,
-                    id: i + ':' + j
-                }
-                if((i + j) % 2 === 0) {
-                    square.color = 'white'
-                } else {
-                    square.color = 'black'
-                }
-                row.push(square)
-            };
-            board.push(row);
-        }
-        return board
-    }
-
-    const board = boardCreateElements();
+    const squares = useSelector(state => state.board.squares);
 
     useEffect(() => {
-        dispatch(squaresCreating(board));
-    }, []);
+        dispatch(squaresCreating(boardCreateSquards()))
+    }, [])
 
     const squaresDrawing = (board) => {
-        return board.map((row) => {
-            return row.map(({id, ...props}) => {
-                return <Square key={id} id={id} {...props}/>
-            })
+        return board.map(({id, ...props}, num) => {
+            return <Square key={id} id={id} num={num} {...props}></Square>
         })
     }
 
-    const elements = squaresDrawing(squares);
+    const squareElements = squaresDrawing(squares);
 
     return (
         <div className="Board-grid">
-            {elements}
+            {squareElements}
         </div>
     );
 };
