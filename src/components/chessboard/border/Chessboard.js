@@ -1,46 +1,36 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { squaresCreating, figuresCreating } from './boardSlice'
+import { useSelector } from 'react-redux';
 import Square from '../square/Square';
+import Figure from '../figure/Figure';
 
 import './Chessboard.css';
 
-const boardCreateSquards = () => {
-    let board = [];
-    for(let i = 0; i < 8; i++) {
-        for(let j = 0; j < 8; j++){
-            const squareData = {
-                color: '',
-                row: i,
-                col: j,
-                id: i + ':' + j
-            }
-            if((i + j) % 2 === 0) {
-                squareData.color = 'white'
-            } else {
-                squareData.color = 'black'
-            }
-            board.push(squareData);
-        };
-    };
-    return board
-};
-
-const Chessboard = () => {
-    const dispatch = useDispatch();
+// Это уже конкретно наша доска
+const Chessboard = () => { 
+    const figures = useSelector(state => state.board.figures);
     const squares = useSelector(state => state.board.squares);
 
-    useEffect(() => {
-        dispatch(squaresCreating(boardCreateSquards()))
-    }, [])
+    // Если в массиве из квадратов содержится квадрат с айди, равным айди массива фигуры, 
+    // то возвращаем верстку с фигурой внутри, если нет, то просто квадрат
 
-    const squaresDrawing = (board) => {
-        return board.map(({id, ...props}, num) => {
-            return <Square key={id} id={id} num={num} {...props}></Square>
-        })
-    }
+    const squaresDrawing = (squares, figures) => {
+        let arr = []; // Этот массив мы будем отрисовывать
 
-    const squareElements = squaresDrawing(squares);
+        for (let i = 0; i < squares.length; i++) {
+            // Составляем доску
+            arr.push (
+                <Square key={squares[i].id} {...squares[i]}/>
+            );
+            for (let j = 0; j < figures.length; j++) {
+                // В эти кубики необходимо поместить фигуры
+                if(squares[i].id === figures[j].id) {
+                    arr[i] = <Square key={squares[i].id} {...squares[i]}><Figure num={j} key={figures[j].id} {...figures[j]}/></Square>
+                };
+            };
+        };
+        return arr;
+    };
+
+    const squareElements = squaresDrawing(squares, figures);
 
     return (
         <div className="Board-grid">

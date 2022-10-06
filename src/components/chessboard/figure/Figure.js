@@ -1,11 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
+import { setActiveClass } from '../border/boardSlice';
 import './Figure.css'
 
-const Figure = ({colorFigure}) => { 
+export default function Figure ({colorFigure, active, id, num}) {
+    const dispatch = useDispatch()
+
     return (
-        <div onClick={(e) => {console.dir(e.target)}} className={`checker checker-${colorFigure}`}></div>
+        <div 
+            onClick={() => dispatch(setActiveClass(num))}
+            className={`checker checker-${colorFigure}` + (active ? ' active' : '')}></div>
     );
 };
-
-export default Figure;
