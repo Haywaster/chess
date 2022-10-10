@@ -1,6 +1,5 @@
 import Header from '../header/header';
 import Chessboard from '../chessboard/border/Chessboard';
-
 import './App.css';
 
 function App() {

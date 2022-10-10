@@ -3,7 +3,8 @@
     height: 55px;
     border-radius: 50%;
     cursor: pointer;
-    background-color:rgb(34, 0, 255)
+    background-color:rgb(34, 0, 255);
+    transition-duration: .2s;
 }
 
 .checker-black {
@@ -14,6 +15,8 @@
     background-color: rgb(255, 255, 255);
 }
 
-.active {
+.checker-active {
     background-color: rgb(255, 42, 0);
+    width: 60px;
+    height: 60px;
 }

@@ -11,3 +11,7 @@
 .square-black {
     background-color:black;
 }
+
+.square-active {
+    opacity: .5;
+}

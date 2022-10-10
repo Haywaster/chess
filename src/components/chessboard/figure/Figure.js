@@ -4,10 +4,9 @@ import './Figure.css'
 
 export default function Figure ({colorFigure, active, id, num}) {
     const dispatch = useDispatch()
-
     return (
         <div 
-            onClick={() => dispatch(setActiveClass(num))}
-            className={`checker checker-${colorFigure}` + (active ? ' active' : '')}></div>
+            onClick={(e) => dispatch(setActiveClass([id, num, e.stopPropagation()]))}
+            className={`checker checker-${colorFigure}` + (active ? ' checker-active' : '')}></div>
     );
 };

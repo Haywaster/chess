@@ -18,12 +18,12 @@ const Chessboard = () => {
         for (let i = 0; i < squares.length; i++) {
             // Составляем доску
             arr.push (
-                <Square key={squares[i].id} {...squares[i]}/>
+                <Square num={i} key={squares[i].id} {...squares[i]}/>
             );
             for (let j = 0; j < figures.length; j++) {
                 // В эти кубики необходимо поместить фигуры
                 if(squares[i].id === figures[j].id) {
-                    arr[i] = <Square key={squares[i].id} {...squares[i]}><Figure num={j} key={figures[j].id} {...figures[j]}/></Square>
+                    arr[i] = <Square num={i} key={squares[i].id} {...squares[i]}><Figure num={j} key={figures[j].id} {...figures[j]}/></Square>
                 };
             };
         };
